@@ -12,13 +12,17 @@ inputBtn.addEventListener("click", function () {
 function renderInfo() {
   let listItems = "";
   for (let i = 0; i < myInfo.length; i++) {
+    let url = myInfo[i];
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      url = "http://" + url;
+    }
     listItems += `
         <li>
-            <a target = "_blank" href = "http://${myInfo[i]}">
-            ${myInfo[i]}
+            <a target="_blank" href="${url}">
+                ${myInfo[i]}
             </a>
-        </li>    
-        `
+        </li>`;
   }
+
   ulEl.innerHTML = listItems;
 }
